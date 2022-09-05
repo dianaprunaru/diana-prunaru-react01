@@ -635,6 +635,9 @@ a {
   padding: 30px 0;
 }
 
+.home-newsletter .form-message {
+}
+
 .home-newsletter .form-newsletter {
   flex-direction: row;
   justify-content: space-between;
