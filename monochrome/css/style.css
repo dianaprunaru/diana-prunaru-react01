@@ -550,6 +550,7 @@ imaginea. Imi strica alinierea si nu am reusit sa o remediez, asa ca am apelat
   display: inline-block;
   margin-left: 16px;
   border: none;
+  background-color: transparent;
 }
 
 .product-tile-controls .product-control i:hover {
