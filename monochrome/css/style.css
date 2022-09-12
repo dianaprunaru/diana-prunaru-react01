@@ -427,8 +427,18 @@ a {
   color: #2b2b2b;
 }
 
-.header-controls a {
+.header-controls li {
   color: #2b2b2b;
+}
+
+.header-controls .header-counters {
+  display: inline-block;
+  padding: 5px;
+}
+
+.header-controls .header-counters .header-counter {
+  display: inline-block;
+  padding: 5px;
 }
 
 .header-search a {
@@ -534,14 +544,15 @@ imaginea. Imi strica alinierea si nu am reusit sa o remediez, asa ca am apelat
   display: flex;
 }
 
-.product-tile-controls a {
+.product-tile-controls .product-control {
   color: #2b2b2b;
   font-size: 25px;
   display: inline-block;
   margin-left: 16px;
+  border: none;
 }
 
-.product-tile-controls a i:hover {
+.product-tile-controls .product-control i:hover {
   color: #740878;
 }
 
