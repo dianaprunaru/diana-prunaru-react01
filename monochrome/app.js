@@ -83,7 +83,9 @@ class NewsletterForm extends React.Component {
 const newsletterContainer = document.querySelector(
   '.footer-sign-up-newsletter',
 );
-ReactDOM.render(<NewsletterForm></NewsletterForm>, newsletterContainer);
+ReactDOM.createRoot(newsletterContainer).render(
+  <NewsletterForm></NewsletterForm>,
+);
 
 class AddToCartButton extends React.Component {
   state = {
@@ -136,7 +138,7 @@ class AddToCartButton extends React.Component {
   }
 }
 
-const AddToWishlistButton = () => {
+const AddToWishlistButton = ({ productId }) => {
   const state = React.useState({
     added: false,
     busy: false,
@@ -152,6 +154,17 @@ const AddToWishlistButton = () => {
     });
 
     setTimeout(() => {
+      const newEvent = new CustomEvent(
+        actualState.added ? REMOVE_FROM_WISHLIST_EVENT : ADD_TO_WISHLIST_EVENT,
+        {
+          detail: {
+            productId,
+          },
+        },
+      );
+
+      dispatchEvent(newEvent);
+
       setState({
         added: !actualState.added,
         busy: false,
@@ -178,16 +191,28 @@ const AddToWishlistButton = () => {
 
 class ProductControls extends React.Component {
   render() {
+    const productId = this.props.productId;
+
+    const AddToCartButton = ({ productId }) => {
+      return <AddToCartButton productId={productId}></AddToCartButton>;
+    };
+
+    const AddToWishlistButton = ({ productId }) => {
+      return <AddToWishlistButton productId={productId}></AddToWishlistButton>;
+    };
+
     return [
       <AddToCartButton
         // className="a2c"
         key="cart"
         productId={productId}
+        className="product-a2c"
       ></AddToCartButton>,
       <AddToWishlistButton
         // className="a2w"
         key="wl"
         productId={this.props.productId}
+        className="product-a2w"
       ></AddToWishlistButton>,
     ];
   }
@@ -195,9 +220,8 @@ class ProductControls extends React.Component {
 
 const productTileControls = document.querySelectorAll('.product-tile-controls');
 productTileControls.forEach((productTileControl, index) => {
-  ReactDOM.render(
+  ReactDOM.createRoot(productTileControl).render(
     <ProductControls productId={index}></ProductControls>,
-    productTileControl,
   );
 });
 
@@ -250,7 +274,7 @@ class HeaderCounters extends React.Component {
 
         this.setState({
           wishlistItems: newProductIds,
-          wishlisItemsCount: this.state.wishlisItemsCount + 1,
+          wishlisItemsCount: this.state.wishlistItemsCount + 1,
         });
         break;
     }
