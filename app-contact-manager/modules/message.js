@@ -8,17 +8,21 @@ export default (message = '', type = 'primary') => {
   // FYI exista un textContent
   messageContainer.textContent = message;
 
-  messageContainer.innerHTML = `
-  <div>${message}</div>
-  <button type="button"
-      title="Close"
-      id="close-button"
-      class="btn btn-close close-button"
-    ></button>
-  `;
+  const closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '&times';
+  const x = messageContainer.appendChild(closeBtn);
+  x.addEventListener('click', clearMessages);
 
-  const closeBtn = document.getElementById('close-button');
-  closeBtn.addEventListener('click', clearMessages);
+  closeBtn.classList.add(
+    'border',
+    'border-0',
+    'rounded',
+    'text-white',
+    'bg-success',
+    'float-end',
+    'd-flex',
+    'align-middle',
+  );
 
   return messageContainer;
 };
