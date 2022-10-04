@@ -34,6 +34,10 @@ stage.addEventListener('click', (event) => {
   addMessage(renderMessage('Contact removed', 'success'));
 });
 
+export const clearStage = () => {
+  stage.innerHTML = '';
+};
+
 stage.addEventListener('click', (event) => {
   const { target } = event;
 
@@ -55,7 +59,7 @@ stage.addEventListener('click', (event) => {
   }
 
   clearMessages();
-  stage.innerHTML = '';
+  clearStage();
   stage.append(renderEditContact(contact));
 });
 

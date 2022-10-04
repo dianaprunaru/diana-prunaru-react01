@@ -335,6 +335,6 @@ class HeaderCounters extends React.Component {
   }
 }
 
-const headerCounters = document.querySelector('.header-counters');
+const headerCounters = document.querySelector('.header-controls');
 
 ReactDOM.createRoot(headerCounters).render(<HeaderCounters></HeaderCounters>);
