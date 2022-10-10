@@ -1,6 +1,11 @@
 import contacts from './data.js';
 
-export const findContact = (needle = 'query') => {
+export const findContact = (
+  needle = 'query',
+  options = {
+    caseSensitive: false,
+  },
+) => {
   const results = contacts.filter((contact) => {
     const values = Object.values(contact);
     // [1, 'Carol', 'Carolson', '0741..', 'carol@...']
@@ -15,6 +20,11 @@ export const findContact = (needle = 'query') => {
 
     if (haystack.includes(needle)) {
       return true;
+    }
+
+    if (options.caseSensitive === false) {
+      console.log(needle.toLowerCase());
+      return needle.toLowerCase();
     }
 
     return false;

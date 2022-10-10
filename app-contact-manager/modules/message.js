@@ -10,8 +10,8 @@ export default (message = '', type = 'primary') => {
 
   const closeBtn = document.createElement('button');
   closeBtn.innerHTML = '&times';
-  const x = messageContainer.appendChild(closeBtn);
-  x.addEventListener('click', clearMessages);
+  const close = messageContainer.appendChild(closeBtn);
+  close.addEventListener('click', clearMessages);
 
   closeBtn.classList.add(
     'border',
