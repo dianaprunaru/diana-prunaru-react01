@@ -11,7 +11,7 @@ export const findContact = (
     // [1, 'Carol', 'Carolson', '0741..', 'carol@...']
 
     const haystack = values.reduce((haystack, value) => {
-      if (typeof value === 'string') {
+      if (typeof value === 'string' && value.length > 3) {
         haystack += value.toLowerCase();
       }
 
